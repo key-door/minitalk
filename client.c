@@ -6,7 +6,7 @@
 /*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 09:32:04 by keys              #+#    #+#             */
-/*   Updated: 2022/10/17 08:48:18 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/10/17 10:37:26 by kyoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,30 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int			catches_signal;
-
-static void	get_signal(int signal)
-{
-	catches_signal = signal;
-}
-
-static void	set_signal(void)
-{
-	signal(SIGUSR1, &get_signal);
-	signal(SIGUSR2, &get_signal);
-}
-
 static void	ft_kill(int pid, char c)
 {
-	int	bit;
 	int	i;
 
-	bit = 1;
 	i = 8;
 	while (i--)
 	{
-		if (c >> i & 0)
+		//システムコールの kill() は、任意のプロセスグループもしくはプロセスにシグナルを送るのに使われる。
+		if (c >> i & 1)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
+			//usleep() 関数は (少なくとも) usecマイクロ秒の間、 呼び出し元スレッドの実行を延期する。 
 		usleep(100);
 	}
 }
 
-static void	signal_handler(const char *pid, char *str)
+static void	ft_signal_handler(int pid, char *str)
 {
-	int	id;
-	// int	i;
 
-	id = ft_atoi(pid);
 	while (*str)
 	{
-		ft_kill(id, *str);
+		ft_kill(pid, *str);
+		str++;
 	}
 }
 
@@ -61,7 +46,6 @@ int	main(int argc, char **argv)
 {
 	if (argc != 3 || !argv[2])
 		return (1);
-	set_signal();
-	signal_handler(argv[1], argv[2]);
+	ft_signal_handler(ft_atoi(argv[1]), argv[2]);
 	return (0);
 }
