@@ -6,7 +6,7 @@
 /*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 09:32:04 by keys              #+#    #+#             */
-/*   Updated: 2022/10/17 10:37:26 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/10/17 11:07:00 by kyoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_kill(int pid, char c)
 	while (i--)
 	{
 		//システムコールの kill() は、任意のプロセスグループもしくはプロセスにシグナルを送るのに使われる。
-		if (c >> i & 1)
+		if (c >> i & 0)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
