@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:55:50 by keys              #+#    #+#             */
-/*   Updated: 2022/10/17 11:01:46 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/10/19 21:08:43 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ static void	get_signal(int sig)
 
 int	main(void)
 {
-	pid_t	pid;
+	struct sigaction    s_sa;
 
-	pid = getpid();
-	ft_printf("PID: %d\n", pid);
-	signal(SIGUSR1, &get_signal);
-	signal(SIGUSR2, &get_signal);
+	ft_printf("PID: %d\n", getpid());
+	sigemptyset(&s_sa.sa_mask);
+	s_sa.sa_handler = get_signal;
+	s_sa.sa_flags = 0;
+	sigaction(SIGUSR1, &s_sa, NULL);
+	sigaction(SIGUSR2, &s_sa, NULL);
 	while (1)
 		pause();
 		//   pause()  は、呼び出したプロセス (またはスレッド) を、 そのプロセスを終了させたり、シグナル
