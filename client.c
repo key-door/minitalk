@@ -6,7 +6,7 @@
 /*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 09:32:04 by keys              #+#    #+#             */
-/*   Updated: 2022/10/21 15:37:40 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/10/21 16:28:20 by kyoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void	ft_signal_handler(int pid, char *str)
 int	main(int argc, char **argv)
 {
 	if (argc != 3 || !argv[2])
+		return (1);
+	if (kill(ft_atoi(argv[1]), 0) == -1)
 		return (1);
 	ft_signal_handler(ft_atoi(argv[1]), argv[2]);
 	return (0);
