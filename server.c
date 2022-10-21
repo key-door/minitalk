@@ -6,7 +6,7 @@
 /*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:55:50 by keys              #+#    #+#             */
-/*   Updated: 2022/10/21 15:24:18 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/10/21 15:37:49 by kyoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ static void	get_signal(int sig)
 	static int	i = 0;
 	static char	c;
 
-	// if (signal == SIGUSR1)
-
-	if(sig == SIGUSR1)
+	if(sig == SIGUSR2)
 		c = c << 1;
 	else
 		c = (c << 1) + 1;
