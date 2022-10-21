@@ -1,13 +1,18 @@
-NAME		= talk
+NAME		= minitalk
 
 SRC_CLIENT	= client.c 
 SRC_SERVER	= server.c
+
 OBJ_CLIENT	= $(SRC_CLIENT:.c=.o)
 OBJ_SERVER	= $(SRC_SERVER:.c=.o)
+
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 NAME_CLIENT	= client
 NAME_SERVER = server
+
+PRINTFDIR		= ft_printf/
+PRINTF		= libftprintf.a
 
 
 
@@ -15,32 +20,24 @@ all			: $(NAME)
 
 $(NAME)		: server client
 
-#cp libft/libft.a ./
+client		: $(OBJ_CLIENT) printf
+			$(CC) $(CFLAGS) -o $(NAME_CLIENT) $(OBJ_CLIENT) $(PRINTF)
 
-# cp libft/libft.a $(NAME)
-client		: $(OBJ_CLIENT) libft
-			ar rcs client $^
-# make bonus -C libft
-# cp libft/libft.a $(NAME_CLIENT)
-# $(CC) -o $^
-#$@ ターゲットファイル名　
-
-server		: $(OBJ_SERVER) libft
+server		: $(OBJ_SERVER) printf
+			$(CC) $(CFLAGS) -o $(NAME_SERVER) $(OBJ_CLIENT) $(PRINTF)
 			ar rcs server $^
-# cp libft/libft.a $(NAME_SERVER)
-# ar rcs server libft.a
-# $(CC) -o $^
 
-libft	:
-			make -C libft
+printf		:
+			make -C printf
+			mv $(PRINTFDIR)$(PRINTF) ./
 
 clean		:
 			rm -f $(OBJ_CLIENT) $(OBJ_SERVER)
-			make clean -C libft
+			make clean -C $(PRINTFDIR)
 
 fclean		: clean
-			rm -f $(NAME_CLIENT) $(NAME_SERVER) libft/libft.a
+			rm -f $(NAME_CLIENT) $(NAME_SERVER) $(PRINTF)
 
 re			: fclean all
 
-.PHONY		: all clean fclean re libft
+.PHONY		: all clean fclean re libft printf
