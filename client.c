@@ -6,11 +6,11 @@
 /*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 09:32:04 by keys              #+#    #+#             */
-/*   Updated: 2022/10/17 11:07:00 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/10/21 15:23:30 by kyoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf/include/ft_printf.h"
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>

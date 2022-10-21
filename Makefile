@@ -20,15 +20,14 @@ all			: $(NAME)
 
 $(NAME)		: server client
 
-client		: $(OBJ_CLIENT) printf
-			$(CC) $(CFLAGS) -o $(NAME_CLIENT) $(OBJ_CLIENT) $(PRINTF)
+client		: printf $(OBJ_CLIENT)
+			$(CC) $(CFLAGS) $(OBJ_CLIENT) $(PRINTF) -o $(NAME_CLIENT)
 
-server		: $(OBJ_SERVER) printf
-			$(CC) $(CFLAGS) -o $(NAME_SERVER) $(OBJ_CLIENT) $(PRINTF)
-			ar rcs server $^
+server		: printf $(OBJ_SERVER)
+			$(CC) $(CFLAGS) $(OBJ_SERVER) $(PRINTF) -o $(NAME_SERVER)
 
 printf		:
-			make -C printf
+			make -C $(PRINTFDIR)
 			mv $(PRINTFDIR)$(PRINTF) ./
 
 clean		:

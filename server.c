@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:55:50 by keys              #+#    #+#             */
-/*   Updated: 2022/10/19 21:08:43 by keys             ###   ########.fr       */
+/*   Updated: 2022/10/21 15:24:18 by kyoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf/include/ft_printf.h"
 #include <signal.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -21,9 +21,9 @@ static void	get_signal(int sig)
 	static int	i = 0;
 	static char	c;
 
-	if(sig == SIGUSR1)
+	// if (signal == SIGUSR1)
 
-	if (signal == SIGUSR1)
+	if(sig == SIGUSR1)
 		c = c << 1;
 	else
 		c = (c << 1) + 1;
