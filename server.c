@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:55:50 by keys              #+#    #+#             */
-/*   Updated: 2022/10/21 15:37:49 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/10/24 10:34:57 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@ static void	get_signal(int sig)
 int	main(void)
 {
 	struct sigaction    s_sa;
+	pid_t 	pid;
 
-	ft_printf("PID: %d\n", getpid());
+	pid = getpid();
+	if(pid < 0)
+		return 1;
+	ft_printf("PID: %d\n", pid);
 	sigemptyset(&s_sa.sa_mask);
 	s_sa.sa_handler = get_signal;
 	s_sa.sa_flags = 0;
