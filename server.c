@@ -3,25 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:55:50 by keys              #+#    #+#             */
-/*   Updated: 2022/10/24 10:34:57 by keys             ###   ########.fr       */
+/*   Updated: 2022/10/26 02:26:32 by kyoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/include/ft_printf.h"
-#include <signal.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include "libft/libft.h"
 
 static void	get_signal(int sig)
 {
-	static int	i = 0;
+	static int	i;
 	static char	c;
 
-	if(sig == SIGUSR2)
+	if (sig == SIGUSR2)
 		c = c << 1;
 	else
 		c = (c << 1) + 1;
@@ -35,13 +31,15 @@ static void	get_signal(int sig)
 
 int	main(void)
 {
-	struct sigaction    s_sa;
-	pid_t 	pid;
+	struct sigaction	s_sa;
+	pid_t				pid;
 
 	pid = getpid();
-	if(pid < 0)
-		return 1;
-	ft_printf("PID: %d\n", pid);
+	if (pid < 0)
+		return (1);
+	ft_putstr_fd("PID: ", 1);
+	ft_putnbr_fd(pid, 1);
+	ft_putstr_fd("\n", 1);
 	sigemptyset(&s_sa.sa_mask);
 	s_sa.sa_handler = get_signal;
 	s_sa.sa_flags = 0;
@@ -49,7 +47,5 @@ int	main(void)
 	sigaction(SIGUSR2, &s_sa, NULL);
 	while (1)
 		pause();
-		//   pause()  は、呼び出したプロセス (またはスレッド) を、 そのプロセスを終了させたり、シグナル
-    //    捕捉関数が起動されるような シグナルが配送されるまで、スリープさせる。
 	return (0);
 }

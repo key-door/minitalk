@@ -1,47 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 09:32:04 by keys              #+#    #+#             */
-/*   Updated: 2022/10/26 02:26:29 by kyoda            ###   ########.fr       */
+/*   Created: 2022/07/15 17:26:43 by kyoda             #+#    #+#             */
+/*   Updated: 2022/08/15 20:41:08 by kyoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-static void	ft_kill(int pid, char c)
+int	ft_isalpha(int c)
 {
-	int	i;
-
-	i = 8;
-	while (i--)
-	{
-		if (c >> i & 1)
-			kill(pid, SIGUSR1);
-		else
-			kill(pid, SIGUSR2);
-		usleep(1000);
-	}
-}
-
-static void	ft_signal_handler(int pid, char *str)
-{
-	while (*str)
-	{
-		ft_kill(pid, *str);
-		str++;
-	}
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 3 || !argv[2])
+	if (65 <= c && c <= 90)
 		return (1);
-	if (kill(ft_atoi(argv[1]), 0) == -1)
+	if (97 <= c && c <= 122)
 		return (1);
-	ft_signal_handler(ft_atoi(argv[1]), argv[2]);
 	return (0);
 }
