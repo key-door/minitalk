@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 21:01:57 by kyoda             #+#    #+#             */
-/*   Updated: 2022/10/26 02:26:25 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/11/28 00:44:12 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@
 # include <ctype.h>
 # include <limits.h>
 # include <math.h>
-# include <signal.h>
-# include <signal.h>
 # include <stdbool.h>
 # include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <sys/types.h>
 # include <unistd.h>
 
 typedef struct s_list
@@ -37,6 +34,7 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					ft_isspace(int c);
 size_t				ft_strlen(const char *str);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
@@ -54,6 +52,7 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strnstr(const char *haystack, const char *needle,
 						size_t len);
 int					ft_atoi(const char *str);
+long				ft_atol(const char *nptr);
 void				*ft_calloc(size_t count, size_t size);
 char				*ft_strdup(const char *s1);
 char				*ft_substr(char const *s, unsigned int start, size_t len);

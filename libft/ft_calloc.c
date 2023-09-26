@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:36:32 by kyoda             #+#    #+#             */
-/*   Updated: 2022/10/06 16:08:04 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/11/27 05:23:42 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_calloc(size_t count, size_t size)
 	if (count == 0 || size == 0)
 		return (ft_calloc(1, 1));
 	p = malloc(count * size);
-	if (p == NULL)
+	if (!p)
 		return (NULL);
 	else
 		ft_bzero(p, count * size);

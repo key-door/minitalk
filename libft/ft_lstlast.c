@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:28:04 by kyoda             #+#    #+#             */
-/*   Updated: 2022/08/30 01:37:30 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/11/27 11:51:26 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstlast(t_list *lst)
 	tmp = lst;
 	while (tmp)
 	{
-		if ((tmp->next) == NULL)
+		if (!(tmp->next))
 			break ;
 		tmp = tmp->next;
 	}

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:09:39 by kyoda             #+#    #+#             */
-/*   Updated: 2022/09/03 06:55:26 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/11/28 00:42:56 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long	long_flag(long flag, long result, const char *str)
+static long	ft_atoi_overflow(long flag, long result, const char *str)
 {
 	if (flag == -1)
 	{
@@ -28,6 +28,12 @@ static long	long_flag(long flag, long result, const char *str)
 	return (1);
 }
 
+int	ft_isspace(int c)
+{
+	return (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ');
+}
+
 int	ft_atoi(const char *str)
 {
 	int		i;
@@ -36,8 +42,7 @@ int	ft_atoi(const char *str)
 
 	i = 0;
 	flag = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
+	while (ft_isspace((int)str[i]))
 		i++;
 	if (str[i] == '-')
 		flag = -1;
@@ -46,8 +51,8 @@ int	ft_atoi(const char *str)
 	result = 0;
 	while (('0' <= str[i] && str[i] <= '9'))
 	{
-		if (long_flag(flag, result, &str[i]) != 1)
-			return (long_flag(flag, result, &str[i]));
+		if (ft_atoi_overflow(flag, result, &str[i]) != 1)
+			return (ft_atoi_overflow(flag, result, &str[i]));
 		result = (result * 10) + (str[i++] - '0');
 	}
 	result *= flag;

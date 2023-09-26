@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:28:07 by kyoda             #+#    #+#             */
-/*   Updated: 2022/08/30 01:37:24 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/11/27 11:52:49 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (!del)
-		return ;
 	if (lst)
 	{
-		del(lst->content);
+		if (del)
+			del(lst->content);
 		free(lst);
 	}
 }

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: ubuntu2204 <ubuntu2204@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:14:25 by keys              #+#    #+#             */
-/*   Updated: 2022/08/15 20:41:09 by kyoda            ###   ########.fr       */
+/*   Created: 2023/06/24 16:49:50 by kyoda             #+#    #+#             */
+/*   Updated: 2023/07/29 21:52:19 by ubuntu2204       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	if (ft_isdigit(c) || ft_isalpha(c))
-		return (1);
-	return (0);
+	size_t	len_s1;
+	size_t	len_s2;
+
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	if (len_s2 < n)
+		ft_strlcpy(&s1[len_s1], s2, len_s2 + 1);
+	else
+		ft_strlcpy(&s1[len_s1], s2, n + 1);
+	return (s1);
 }
