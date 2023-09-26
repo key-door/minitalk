@@ -14,8 +14,6 @@ CFLAGS		= -Wall -Wextra -Werror
 LIBFTDIR	= libft/
 LIBFT_NAME		= libft.a
 
-
-
 all					: $(NAME)
 
 $(NAME)				: $(NAME_SERVER) $(NAME_CLIENT)
