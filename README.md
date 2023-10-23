@@ -1,15 +1,18 @@
 # Minitalk
 
-Minitalk is a program that facilitates communication between a client and a server.
+Minitalkは、クライアントとサーバー間の通信をするプログラムです。
 
-## Usage
+## 使用方法
 
-Prepare two terminals.
+2つのターミナルを用意してください。
 
-1. In one terminal, execute:
-```./server```
-2. The server will output a PID (Process ID). Use this PID to send a string from the client side.
-3. To send a message, use the following format in the other terminal: 
-```./client {PID} {string}```
-
-Replace `{PID}` with the outputted Process ID and `{string}` with the message you wish to send.
+1. 一つのターミナルで、以下のコマンドを実行してください:
+```
+./server
+```
+2. サーバーはPID（プロセスID）を出力します。このPIDを使用して、クライアント側から文字列を送信します。
+3. メッセージを送信するには、もう一つのターミナルで以下の形式を使用してください:
+```
+./client {PID} {string}
+```
+`{PID}`を出力されたプロセスIDに、`{string}`を送信したいメッセージに置き換えてください。
